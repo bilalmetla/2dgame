@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/background/set2_background.png" type="Texture" id=1]
+[ext_resource path="res://assets/background/set2_tiles.png" type="Texture" id=2]
+
+[node name="background" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="purpleSky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1280, 960 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/purpleSky"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="nearByBlocks" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1120, 840 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/nearByBlocks"]
+scale = Vector2( 1.75, 1.75 )
+texture = ExtResource( 2 )
+centered = false

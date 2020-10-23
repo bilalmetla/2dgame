@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/steve.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/tilesOneWay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/tilesSolid.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Area2D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/hud.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=8]
+
+[node name="level1" type="Node2D"]
+
+[node name="tilesOneWay" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1295.69, 259.891 )
+scale = Vector2( 1, 0.8 )
+
+[node name="tilesSolid" parent="." instance=ExtResource( 3 )]
+
+[node name="background" parent="." instance=ExtResource( 4 )]
+
+[node name="Area2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 5272.94, 1159.37 )
+
+[node name="hud" parent="." instance=ExtResource( 7 )]
+
+[node name="coins" type="Node2D" parent="."]
+
+[node name="coin1" parent="coins" instance=ExtResource( 6 )]
+position = Vector2( 1631.88, 430.374 )
+
+[node name="coin2" parent="coins" instance=ExtResource( 6 )]
+position = Vector2( 1798.38, 228.559 )
+
+[node name="coin3" parent="coins" instance=ExtResource( 6 )]
+position = Vector2( 2077.56, 230.241 )
+
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="enemy1" parent="enemies" instance=ExtResource( 8 )]
+position = Vector2( 1252.93, 381.767 )
+enemy_direction = false
+
+[node name="enemy2" parent="enemies" instance=ExtResource( 8 )]
+position = Vector2( 1696.93, 158.088 )
+detect_cliff = false
+
+[node name="enemy3" parent="enemies" instance=ExtResource( 8 )]
+position = Vector2( 2184.65, 368.312 )
+
+[node name="steve" parent="." instance=ExtResource( 1 )]
+position = Vector2( 852.548, 329.137 )
+[connection signal="body_entered" from="Area2D" to="steve" method="_on_Area2D_body_entered"]
+[connection signal="coin_collected" from="coins/coin1" to="hud" method="_on_coin_collected"]
+[connection signal="coin_collected" from="coins/coin2" to="hud" method="_on_coin_collected"]
+[connection signal="coin_collected" from="coins/coin3" to="hud" method="_on_coin_collected"]

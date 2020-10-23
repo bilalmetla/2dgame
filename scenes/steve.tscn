@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/steve.gd" type="Script" id=1]
+[ext_resource path="res://steve_spriteframes.tres" type="SpriteFrames" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 25.0
+
+[node name="steve" type="KinematicBody2D"]
+collision_mask = 2147483678
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 2 )
+animation = "idle"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 14 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, 100 )
+current = true
+limit_left = -200
+limit_top = -50000000
+limit_right = 30000000
+limit_bottom = 900
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.5
+drag_margin_right = 0.5
